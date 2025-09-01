@@ -8,6 +8,18 @@ header {
     margin-bottom: 15px;
 }
 
+header h1 {
+    color:#F29829;
+    font-family: 'Roboto Slab', serif;
+    font-size:80px;
+    text-align: center;
+}
+
+header nav{
+    width: 100%;
+    text-align: center;
+}
+
 
 /* Swatches em Hex 
 .livro_db-1-hex { color: #BF7417; }
