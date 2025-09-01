@@ -8,36 +8,39 @@ $sql_livros = "SELECT * FROM livros
  ORDER BY ano DESC LIMIT 3";
 $resultado_livros = mysqli_query($conn, $sql_livros);
 
-?>
+$sql_autores = "SELECT id_autor, nome, foto, ano_nascimento, nacionalidade, id_livro.livro_autor FROM autores
+ JOIN livro_autor ON livros.id_livro = livro_autor.id_livro
+ ORDER BY COUNT(id_livro.livro_autor) DESC LIMIT 3";
+$resultado_autores = mysqli_query($conn, $sql_autores);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Author" content="Bernardo e Erica">
-    <link rel="icon" type="image/gif" href="/css/icon/book.png">
-    <title>Filmes</title>
+    <meta name="author" content="Bernardo e Erica">
+    <title>Website de Livros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" type="image/png" href="/css/icon/book.png">
 </head>
 
 <body>
-    <header class="container-fluid" style="background-color: #3b895bff">
-        <nav class="nav">
-            <div class="container">
+
+    <header class="container-fluid" style="background-color: #F29829" style="margin-bottom: 15px">
+        <div class="container-lg">
             <div class="row align-items-center">
                 <h1 class="col-4">Website de Livros</h1>
                 <nav class="col text-end">
-                    <a href="index.php" class="btn btn-warning"> Homepage </a>
-                    <a href="livro.php" class="btn btn-warning"> Livros </a>
-                    <a href="autor.php" class="btn btn-warning"> Autor </a>
+                    <a href="index.php" class="btn btn-danger">Homepage</a>
                 </nav>
             </div>
-            </div>
-        </nav>
+        </div>
     </header>
+
     <div class="container-lg home">
         <h2>Filmes mais recentes</h2>
         <div class="row">
