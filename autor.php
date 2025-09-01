@@ -6,14 +6,14 @@ if (!$conn) {
 
 $id = (int) $_GET['id'];
 
-$sql_livro = "SELECT * FROM livros WHERE id_livro = $id";
+$sql_autor = "SELECT * FROM autores WHERE id_autor = $id";
 $resultado = mysqli_query($conn, $sql);
 $livro = mysqli_fetch_assoc($resultado);
 
-$sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto
-               FROM autores 
-               JOIN livro_autor ON autores.id_autor = livro_autor.id_autor
-               WHERE livro_autor.id_livro = $id";
+$sql_livros = "SELECT livros.id_livro, livros.titulo, livros.ano, livros.capa
+               FROM livros
+               JOIN livro_autor ON livros.id_livro= livro_autor.id_livro
+               WHERE livro_autor.id_autor = $id";
 $resultado_atores = mysqli_query($conn, $sql_autores);
 
 ?>

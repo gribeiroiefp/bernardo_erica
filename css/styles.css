@@ -1,0 +1,22 @@
+body {
+    color: #0D0D0D;
+    background: #F29829;
+}
+
+header {
+    background-color: #00481d;
+    margin-bottom: 15px;
+}
+
+
+/* Swatches em Hex 
+.livro_db-1-hex { color: #BF7417; }
+.livro_db-2-hex { color: #F29829; }
+.livro_db-3-hex { color: #59380F; }
+.livro_db-4-hex { color: #F2EADF; }
+.livro_db-5-hex { color: #0D0D0D; }
+*/
+
+/* Gradient em Hex 
+linear-gradient(to right, #000000 0%, 23.326895768247663%, #F8A928 50.397614314115316%, 76.85804188950803%, #FFFFFF 100%);
+*/
