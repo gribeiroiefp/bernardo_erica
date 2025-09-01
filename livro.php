@@ -19,36 +19,28 @@ $resultado_atores = mysqli_query($conn, $sql_autores);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="Author" content="Bernardo e Erica">
-        <link rel="icon" type="image/gif" href="/css/icon/book.png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Slab:wght@100;200&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">
-        <title>Website de Livros</title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Bernardo e Erica">
+    <title>Website de Livros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" type="image/png" href="/css/icon/book.png">
+</head>
 
     <body>
-        <header class="container-fluid" style="background-color: #00481d">
-            <nav class="nav">
-                <div class="container">
-                <div class="row align-items-center">
-                    <h1> Website de Livros</h1>
-                    <nav class="col text-end">
-                        <a href="index.php" class="btn btn-warning"> Homepage </a>
-                        <a href="livro.php" class="btn btn-warning"> Livros </a>
-                        <a href="autor.php" class="btn btn-warning"> Autor </a>
-                    </nav>
-                </div>
-                </div>
-            </nav>
-        </header>
+    <header class="container-fluid" style="background-color: #F29829" style="margin-bottom: 15px">
+        <div class="container-lg">
+            <div class="row align-items-center">
+                <h1 class="col-4">Website de Livros</h1>
+                <nav class="col text-end">
+                    <a href="index.php" class="btn btn-danger">Homepage</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
         <div class="row align-items-start info">
             <img src="<?php echo htmlspecialchars($livro['capa']); ?>" alt="$titulo" class="col-3">
