@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2025 at 03:42 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Tempo de geração: 01-Set-2025 às 19:02
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `livros_db`
+-- Banco de dados: `livros_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `autores`
+-- Estrutura da tabela `autores`
 --
 
 CREATE TABLE `autores` (
@@ -35,10 +35,19 @@ CREATE TABLE `autores` (
   `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `autores`
+--
+
+INSERT INTO `autores` (`id_autor`, `nome`, `ano_nascimento`, `nacionalidade`, `foto`) VALUES
+(1, 'José Saramago', '1922-11-16', 'Portugal', 'uploads/fotos/jose_saramago'),
+(2, 'Clarice Lispector', '1920-12-10', 'Brasil', 'uploads/fotos/clarice_lispector'),
+(3, 'George Orwell', '1903-06-25', 'Reino Unido', 'uploads/fotos/george_orwell');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `livros`
+-- Estrutura da tabela `livros`
 --
 
 CREATE TABLE `livros` (
@@ -48,10 +57,21 @@ CREATE TABLE `livros` (
   `capa` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `livros`
+--
+
+INSERT INTO `livros` (`id_livro`, `titulo`, `ano`, `capa`) VALUES
+(1, 'Ensaio sobre a Cegueira', '1995', 'uploads/capas/ensaio_sobre_a_cegueira'),
+(2, 'Memorial do Convento', '1982', 'uploads/capas/memorial_do_convento'),
+(3, 'A Hora da Estrela', '1977', 'uploads/capas/a_hora_da_estrela'),
+(4, '1984', '1949', 'uploads/capas/1984'),
+(5, 'Animal Farm', '1945', 'uploads/capas/animal_farm');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `livro_autor`
+-- Estrutura da tabela `livro_autor`
 --
 
 CREATE TABLE `livro_autor` (
@@ -61,23 +81,34 @@ CREATE TABLE `livro_autor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Extraindo dados da tabela `livro_autor`
+--
+
+INSERT INTO `livro_autor` (`id`, `id_livro`, `id_autor`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 2),
+(4, 4, 3),
+(5, 5, 3);
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `autores`
+-- Índices para tabela `autores`
 --
 ALTER TABLE `autores`
   ADD PRIMARY KEY (`id_autor`);
 
 --
--- Indexes for table `livros`
+-- Índices para tabela `livros`
 --
 ALTER TABLE `livros`
   ADD PRIMARY KEY (`id_livro`);
 
 --
--- Indexes for table `livro_autor`
+-- Índices para tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`
   ADD PRIMARY KEY (`id`),
@@ -85,33 +116,33 @@ ALTER TABLE `livro_autor`
   ADD KEY `id_autor` (`id_autor`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `autores`
+-- AUTO_INCREMENT de tabela `autores`
 --
 ALTER TABLE `autores`
-  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `livros`
+-- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `livro_autor`
+-- AUTO_INCREMENT de tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
--- Constraints for table `livro_autor`
+-- Limitadores para a tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`
   ADD CONSTRAINT `livro_autor_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`) ON DELETE CASCADE,
