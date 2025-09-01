@@ -1,8 +1,7 @@
 <html>
     <head>
     </head>
-    <body>
-        
+    <body>   
         <h1>Website de livros</h1>
     </body>
 </html>
