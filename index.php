@@ -4,8 +4,8 @@ if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
-$sql_livros = "SELECT * FROM livros
- ORDER BY ano DESC LIMIT 3";
+$sql_livros = "SELECT id_livro, titulo, capa FROM livros
+ORDER BY ano DESC LIMIT 3";
 $resultado_livros = mysqli_query($conn, $sql_livros);
 
 $sql_autores = "SELECT id_autor, nome, foto, ano_nascimento, nacionalidade, id_livro.livro_autor FROM autores
@@ -33,46 +33,59 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
 </head>
 
 <body>
+
     <header><br>
         <section class="container-fluid">
-            <h1><b>R-PA</b></h1>
-            <h3> Deciding what to read next? <br> Here is what you've read before! </h6>
-            <h3> Your all in a website personal archive</h7>
+            <table>
+                <tr>
+                    <td class="name col-1" rowspan="3">R-PA</td>
+                    <td class="tagline">Deciding what to read next? </td>
+                </tr>
+                <tr>
+                    <td class="tagline">Here is what you've read before! </td>
+                </tr>
+                <tr>
+                    <td class="tagline">Your all in a website personal archive</td>
+                </tr>
+                
+            </table>
         </section>
         <nav>
             <button class="col-2"> Novo Livro <a href="addlivro.php"></a></button>                   
             <button class="col-2"> Novo Autor <a href="addautor.php"></a></button>
         </nav>
     </header>
+
+
    <section class="box">
-        <div class="container-lg">
-            <h2>Filmes mais recentes</h2>
+        <div class="container-lg homepage">
+            <h2>Livros mais recentes</h2>
             <div class="row">
-                <?php
-                if ($resultado_livros && mysqli_num_rows($resultado_livros) > 0) {
-                    while ($row = mysqli_fetch_assoc($resultado_livros)) {
-                        $id = $row['id_livro'];
-                        $titulo = htmlspecialchars($row['titulo']);
-                        $capa = htmlspecialchars($row['capa']);
-                        echo <<<HTML
-                        <div class="livro-recente-cont col">
-                            <div class="livro-recente container" style="background-image: url('$capa');">
-                                <a href="./livro.php?id=$id">
-                                    <div class="row align-items-end">
-                                        <div class="col">
-                                            <h6>$titulo</h6>
-                                        </div>
+            <?php
+            if ($resultado_livros && mysqli_num_rows($resultado_livros) > 0) {
+                while ($row = mysqli_fetch_assoc($resultado_livros)) {
+                    $id = $row['id_livro'];
+                    $titulo = htmlspecialchars($row['titulo']);
+                    $capa = htmlspecialchars($row['capa']);
+                    echo <<<HTML
+                    <div class="livro-recente-cont col">
+                        <div class="livro-recente container" style="background-image: url('$capa');">
+                            <a href="./livro.php?id=$id">
+                                <div class="row align-items-end">
+                                    <div class="col">
+                                        <h2>$titulo</h2>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
-                        HTML;
-                    }
+                    </div>
+                    HTML;
                 }
-                ?>
-            </div>
+            }
+            ?>
         </div>
-        <div class="container-lg">
+        </div>
+        <div class="container-lg homepage">
             <h2>Autores com mais Livros</h2>
             <div class="row">
                 <?php
@@ -87,7 +100,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                                 <a href="./autor.php?id=$id">
                                     <div class="row align-items-end">
                                         <div class="col">
-                                            <h6>$nome</h6>
+                                            <h2>$nome</h2>
                                         </div>
                                     </div>
                                 </a>
@@ -100,6 +113,8 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </div>
         </div>
     </section>
+
+
     <footer class="container-fluid text-center">
         <div class="container-lg">
             <p>&copy;Website de Livros bernardo_erica</p>
