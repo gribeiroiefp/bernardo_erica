@@ -1,59 +1,108 @@
-body {
-    color: #0D0D0D;
-    background: #F29829;
+* {
+    box-sizing: border-box;
+  }
+
+body{
+    background-color: #401201;  
+    background-image: url(/css/img/bookvector.jpg);
 }
 
-header {
-    background-color: #3b895bff;
+.box{
+    background-color:#D9C3B0;
+    opacity: 90%;
+}
+
+header{
     margin-bottom: 15px;
 }
 
+.container-fluid{
+    background-color: #F29F05;
+    
+}
+
 header h1 {
-    color:#F29829;
+    color:#401201;
+    padding-left: 50px;
+    padding-top: 30px;
     font-family: 'Roboto Slab', serif;
-    font-size:80px;
+    font-size:90px;
+    text-align: left;
+}
+
+header h3 {
+    color:#401201; 
+    font-family: 'Roboto Slab', serif;
+    font-size:50px;
+    text-align: center;
+    padding: 13px;
+}
+
+h2 {
+    color:#A63F03; 
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding: 15px;
+    margin: 20px;
+}
+
+h6 {
+    color:#401201;  
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
 header nav{
     width: 100%;
+    text-align: left;
+}
+
+header nav button{
+    background-color: #F29F05; 
+    color: #401201;
+    min-width: 120px;
+    padding: 15px;
+    font-size: 1.1em;
+    border: 150px;
+    border-radius: 100px;
+    margin: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease 0s;
+}
+
+header nav button:hover{
+    background-color: #D97904;
+}
+
+
+section.container img{
+    width: 100%;
+}
+
+img {
+    border: 1px solid #0D0105;
+    border-radius: 15px;
+    box-shadow: 5px 5px #0D0105;
+}
+
+row{
+    margin-top: 20px;
+}
+
+footer {
+    clear: both;
+    color: #401201; 
+    background-color: #F29F05; 
     text-align: center;
-}
+    padding: 6px;
+    margin-top: 5px;}
 
-.home .livro-recente-cont {
-    min-height: 450px;
-}
 
-.home .livro-recente {
-    height: 100%;
-    background: #0D0D0D; 
-    background-position: center;
-    background-size: cover;
-}
-.homepage .livro-recente .row{
-    height: 100%;
-    padding: 10px;
-    background: #0D0D0D; 
-}
-
-.homepage .livro-recente .row:hover{
-    background: #0D0D0D; 
-}
-
-.home .livro-recente a{
-    color: #F2EADF;
-    text-decoration: none;
-    height: 100%;
-}
-
-/* Swatches em Hex 
-shadow { color: #BF7417; }
-butões { color: #F29829; }
-hover { color: #59380F; }
-branco { color: #F2EADF; }
-preto { color: #0D0D0D; }
+/* Color Theme Swatches in Hex 
+butões { color: #F29F05; }
+butoes hover { color: #D97904; }
+background { color: #D9C3B0; }
+titles { color: #A63F03; }
+text { color: #401201; }
 */
 
-/* Gradient em Hex 
-linear-gradient(to right, #000000 0%, 23.326895768247663%, #F8A928 50.397614314115316%, 76.85804188950803%, #FFFFFF 100%);
-*/
