@@ -2,10 +2,6 @@
     box-sizing: border-box;
   }
 
-body{
-    background-image: url(/css/img/bookvector.jpg);
-}
-
 .box{
     background-color:#D9C3B0;
     opacity: 90%;

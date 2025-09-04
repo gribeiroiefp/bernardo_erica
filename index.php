@@ -30,13 +30,13 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
     <title>Reader's Personal Archive</title>
 </head>
 
-<body>
+<body style="background-image: url(./css/img/bookvector.jpg);">
 
     <header><br>
         <section class="container-fluid">
             <table>
                 <tr>
-                    <td class="name col-1" rowspan="3">R-PA</td>
+                    <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
                     <td class="tagline">Deciding what to read next? </td>
                 </tr>
                 <tr>
@@ -49,15 +49,15 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </table>
         </section>
         <nav>
-            <button class="col-2"> Novo Livro <a href="addlivro.php"></a></button>                   
-            <button class="col-2"> Novo Autor <a href="addautor.php"></a></button>
+            <button class="col-2"> Add Book <a href="addlivro.php"></a></button>                   
+            <button class="col-2"> Add Author <a href="addautor.php"></a></button>
         </nav>
     </header>
 
 
    <section class="box">
         <div class="container-lg homepage">
-            <h2>Livros mais recentes</h2>
+            <h2>New Releases</h2>
             <div class="row">
             <?php
             if ($resultado_livros && mysqli_num_rows($resultado_livros) > 0) {
@@ -84,7 +84,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
         </div>
         </div>
         <div class="container-lg homepage">
-            <h2>Autores com mais Livros</h2>
+            <h2>By Bibliography Size</h2>
             <div class="row">
                 <?php
                 if ($resultado_autores && mysqli_num_rows($resultado_autores) > 0) {
