@@ -98,9 +98,6 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                         <div class="autor-popular-cont col">
                             <div class="autor-popular container" style="background-image: url('$foto');">
                                 <a href="./autor.php?id=$id">
-                                    <div class="row align-items-end">
-                                      
-                                    </div>
                                 </a>
                                 <div class="col">
                                     <h2>$nome</h2>
