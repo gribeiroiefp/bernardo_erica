@@ -8,7 +8,7 @@ $id = (int) $_GET['id'];
 
 $sql_livro = "SELECT * FROM livros WHERE id_livro = $id";
 $resultado = mysqli_query($conn, $sql);
-$livro = mysqli_fetch_assoc($resultado);
+$sql_livro = mysqli_fetch_assoc($resultado);
 
 $sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto
                FROM autores 
