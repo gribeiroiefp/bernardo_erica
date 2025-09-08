@@ -71,13 +71,10 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                     echo <<<HTML
                     <div class="livro-recente-cont col">
                         <div class="livro-recente container" style="background-image: url('$capa');">
-                            <a href="./livro.php?id=$id">
-                                <div class="row align-items-end">
-                                    <div class="col">
-                                        <h2>$titulo</h2>
-                                    </div>
-                                </div>
-                            </a>
+                            <a href="./livro.php?id=$id"></a>
+                        </div> 
+                        <div class="col titulo">
+                            <h2>$titulo</h2>
                         </div>
                     </div>
                     HTML;
@@ -86,7 +83,9 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             ?>
             </div>
         </div>
-        <div class="container-lg homepage">
+        <br>
+        <br>
+        <div class="container-lg homepage-autor">
             <h2>By Bibliography Size</h2>
             <div class="row">
                 <?php
@@ -100,11 +99,12 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                             <div class="autor-popular container" style="background-image: url('$foto');">
                                 <a href="./autor.php?id=$id">
                                     <div class="row align-items-end">
-                                        <div class="col">
-                                            <h2>$nome</h2>
-                                        </div>
+                                      
                                     </div>
                                 </a>
+                                <div class="col">
+                                    <h2>$nome</h2>
+                                </div>
                             </div>
                         </div>
                         HTML;

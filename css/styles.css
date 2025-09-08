@@ -8,6 +8,7 @@
     margin-left: 80px;
     margin-right: 80px;
     margin-bottom: 20px;
+    background-size: cover;
 
 }
 
@@ -87,10 +88,24 @@ header nav button:hover{
     padding-top: 50px;
 }
 
+.homepage-autor{
+    padding-top: 10px;
+}
+
+.homepage-autor h2 {
+    padding-bottom: 30px;
+    padding-top: 50px;
+}
+
 
 /*index livros*/
 .homepage .livro-recente-cont {
     min-height: 450px;
+}
+
+.homepage .livro-recente-cont .titulo{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .homepage .livro-recente {
@@ -101,11 +116,10 @@ header nav button:hover{
 .homepage .livro-recente .row{
     height: 100%;
     padding: 10px;
-    background: #401201;
-    opacity: 0%;
 }
 
 .homepage .livro-recente .row:hover{
+    size-adjust: 100%;
     background: #401201;
     opacity: 20%;
 }
@@ -117,28 +131,27 @@ header nav button:hover{
 }
 
 /*index autores*/
-.homepage .autor-popular-cont {
+.homepage-autor .autor-popular-cont {
     min-height: 450px;
 }
 
-.homepage .autor-popular {
+.homepage-autor  .autor-popular {
     height: 100%;;
     background-position: center;
     background-size: cover;
 }
-.homepage .autor-popular .row{
+.homepage-autor  .autor-popular .row{
     height: 100%;
     padding: 10px;
+}
+
+.homepage-autor  .autor-popular .row:hover{
+    size-adjust: 100%;
     background: #401201;
     opacity: 20%;
 }
 
-.homepage .autor-popular .row:hover{
-    background: #401201;
-    opacity: 20%;
-}
-
-.homepage .autor-popular a{
+.homepage-autor  .autor-popular a{
     color: #F29F05;
     text-decoration: none;
     height: 100%;
