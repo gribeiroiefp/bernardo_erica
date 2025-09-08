@@ -47,12 +47,12 @@ if (!$conn) {
     </header>
 
     <section class="box">
-        <form action="addAutor.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
-            <input type="text" name="nome" placeholder="Name" required class="form-control mb-3" />
-            <input type="number" name="ano_nascimento" placeholder="Birthyear" required min="1500" max="2099" step="1" class="form-control mb-3" />
+        <form action="editAutor.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
+            <input type="text" name="nome" placeholder="Name" value="Test" required class="form-control mb-3" />
+            <input type="number" name="ano_nascimento" placeholder="Birthyear"  value="Test" required min="1500" max="2099" step="1" class="form-control mb-3" />
             <label for="capa" class="form-label">Author Photo (img):</label>
             <input type="file" name="foto" id="foto" accept="image/*" required class="form-control mb-3" />
-            <button type="submit" class="btn btn-primary">Add Author</button>
+            <button type="submit" class="btn btn-primary">Edit Author</button>
         </form>
     </section>
 
