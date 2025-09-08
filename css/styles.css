@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+  }
+
+.box{
+    background-color:#D9C3B0;
+    opacity: 90%;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+    background-size: cover;
+
+}
+
+header{
+    margin-bottom: 15px;
+}
+
+.headbox{
+    background-color: #F29F05;
+    
+}
+
+.name {
+    color:#401201;
+    padding-left: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: 'Roboto Slab', serif;
+    font-size:90px;
+    text-align: left;
+}
+
+.tagline {
+    color:#401201; 
+    font-family: 'Roboto Slab', serif;
+    font-size:40px;
+    text-align: left;
+    padding: 13px;
+    padding-left: 100px;
+}
+
+h2 {
+    color:#A63F03; 
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+    font-size:40px;
+}
+
+h6 {
+    color:#401201;  
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+header nav{
+    width: 100%;
+    text-align: center;
+}
+
+header nav button{
+    background-color: #F29F05; 
+    color: #401201;
+    min-width: 120px;
+    padding: 15px;
+    font-size: 1.1em;
+    border: 150px;
+    border-radius: 100px;
+    margin: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease 0s;
+}
+
+header nav button:hover{
+    background-color: #D97904;
+}
+
+/*index*/
+
+.homepage{
+    padding-top: 10px;
+}
+
+.homepage h2 {
+    padding-bottom: 30px;
+    padding-top: 50px;
+}
+
+.homepage-autor{
+    padding-top: 10px;
+}
+
+.homepage-autor h2 {
+    padding-bottom: 30px;
+    padding-top: 50px;
+}
+
+
+/*index livros*/
+.homepage .livro-recente-cont {
+    min-height: 450px;
+}
+
+.homepage .livro-recente-cont .titulo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.homepage .livro-recente {
+    height: 100%;;
+    background-position: center;
+    background-size: cover;
+}
+.homepage .livro-recente .row{
+    height: 100%;
+    padding: 10px;
+}
+
+.homepage .livro-recente .row:hover{
+    size-adjust: 100%;
+    background: #401201;
+    opacity: 20%;
+}
+
+.homepage .livro-recente a{
+    color: #F29F05;
+    text-decoration: none;
+    height: 100%;
+}
+
+/*index autores*/
+.homepage-autor .autor-popular-cont {
+    min-height: 450px;
+}
+
+.homepage .autor-popular-cont .nome{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.homepage-autor  .autor-popular {
+    height: 100%;;
+    background-position: center;
+    background-size: cover;
+}
+.homepage-autor  .autor-popular .row{
+    height: 100%;
+    padding: 10px;
+}
+
+.homepage-autor  .autor-popular .row:hover{
+    size-adjust: 100%;
+    background: #401201;
+    opacity: 20%;
+}
+
+.homepage-autor  .autor-popular a{
+    color: #F29F05;
+    text-decoration: none;
+    height: 100%;
+}
+
+
+footer {
+    clear: both;
+    color: #401201; 
+    background-color: #F29F05; 
+    text-align: center;
+    padding: 6px;
+    margin-top: 5px;}
+
+
+/* Swatches em Hex
+
+butões { color: #F29F05; }
+butoes hover { color: #D97904; }
+
+titles { color: #A63F03; }
+
+text/dark { color: #401201; }
+background/light { color: #D9C3B0; }
+*/
+
