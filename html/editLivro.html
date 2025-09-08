@@ -39,12 +39,12 @@
 
     <section class="box">
         <form action="addLivro.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
-            <input type="text" name="titulo" placeholder="Title" required class="form-control mb-3" />
-            <input type="number" name="ano" placeholder="Publish Year" required min="1500" max="2099" step="1" class="form-control mb-3" />
-            <input type="text" name="nacionalidade" placeholder="Country" required class="form-control mb-3" />
+            <input type="text" name="titulo" placeholder="Title" value="Test" required class="form-control mb-3" />
+            <input type="number" name="ano" placeholder="Publish Year" value="Test" required min="1500" max="2099" step="1" class="form-control mb-3" />
+            <input type="text" name="nacionalidade" placeholder="Country" value="Test" required class="form-control mb-3" />
             <label for="capa" class="form-label">Book Cover (img):</label>
             <input type="file" name="capa" id="capa" accept="image/*" required class="form-control mb-3" />
-            <button type="submit" class="btn btn-primary">Add Book</button>
+            <button type="submit" class="btn btn-primary">Edit Book</button>
         </form>
     </section>
 

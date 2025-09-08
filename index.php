@@ -8,9 +8,12 @@ $sql_livros = "SELECT id_livro, titulo, capa FROM livros
 ORDER BY ano DESC LIMIT 3";
 $resultado_livros = mysqli_query($conn, $sql_livros);
 
-$sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto, autores.ano_nascimento, autores.nacionalidade, livro_autor.id_livro FROM autores
- JOIN livro_autor ON livros.id_livro = livro_autor.id_livro
- ORDER BY COUNT(id_livro.livro_autor) DESC LIMIT 3";
+$sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto, autores.ano_nascimento, autores.nacionalidade, 
+COUNT(livro_autor.id_livro) AS total_livros FROM autores
+JOIN livro_autor ON autores.id_autor = livro_autor.id_autor
+JOIN livros ON livros.id_livro = livro_autor.id_livro
+GROUP BY autores.id_autor, autores.nome, autores.foto, autores.ano_nascimento, autores.nacionalidade
+ORDER BY total_livros DESC LIMIT 3;";
 $resultado_autores = mysqli_query($conn, $sql_autores);
 
 ?>
@@ -81,7 +84,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                 }
             }
             ?>
-        </div>
+            </div>
         </div>
         <div class="container-lg homepage">
             <h2>By Bibliography Size</h2>

@@ -40,9 +40,9 @@ CREATE TABLE `autores` (
 --
 
 INSERT INTO `autores` (`id_autor`, `nome`, `ano_nascimento`, `nacionalidade`, `foto`) VALUES
-(1, 'José Saramago', '1922-11-16', 'Portugal', 'uploads/fotos/jose_saramago'),
-(2, 'Clarice Lispector', '1920-12-10', 'Brasil', 'uploads/fotos/clarice_lispector'),
-(3, 'George Orwell', '1903-06-25', 'Reino Unido', 'uploads/fotos/george_orwell');
+(1, 'José Saramago', '1922-11-16', 'Portugal', 'uploads/fotos/jose_saramago.jpg'),
+(2, 'Clarice Lispector', '1920-12-10', 'Brasil', 'uploads/fotos/clarice_lispector.jpg'),
+(3, 'George Orwell', '1903-06-25', 'Reino Unido', 'uploads/fotos/george_orwell.jpg');
 
 -- --------------------------------------------------------
 
@@ -62,11 +62,11 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`id_livro`, `titulo`, `ano`, `capa`) VALUES
-(1, 'Ensaio sobre a Cegueira', '1995', 'uploads/capas/ensaio_sobre_a_cegueira'),
-(2, 'Memorial do Convento', '1982', 'uploads/capas/memorial_do_convento'),
-(3, 'A Hora da Estrela', '1977', 'uploads/capas/a_hora_da_estrela'),
-(4, '1984', '1949', 'uploads/capas/1984'),
-(5, 'Animal Farm', '1945', 'uploads/capas/animal_farm');
+(1, 'Ensaio sobre a Cegueira', '1995', 'uploads/capas/ensaio_sobre_a_cegueira.jpg'),
+(2, 'Memorial do Convento', '1982', 'uploads/capas/memorial_do_convento.jpg'),
+(3, 'A Hora da Estrela', '1977', 'uploads/capas/a_hora_da_estrela.jpg'),
+(4, '1984', '1949', 'uploads/capas/1984.jpg'),
+(5, 'Animal Farm', '1945', 'uploads/capas/animal_farm.jpg');
 
 -- --------------------------------------------------------
 
