@@ -8,7 +8,7 @@ $sql_livros = "SELECT id_livro, titulo, capa FROM livros
 ORDER BY ano DESC LIMIT 3";
 $resultado_livros = mysqli_query($conn, $sql_livros);
 
-$sql_autores = "SELECT id_autor, nome, foto, ano_nascimento, nacionalidade, id_livro.livro_autor FROM autores
+$sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto, autores.ano_nascimento, autores.nacionalidade, livro_autor.id_livro FROM autores
  JOIN livro_autor ON livros.id_livro = livro_autor.id_livro
  ORDER BY COUNT(id_livro.livro_autor) DESC LIMIT 3";
 $resultado_autores = mysqli_query($conn, $sql_autores);
