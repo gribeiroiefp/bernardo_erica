@@ -8,13 +8,14 @@
     margin-left: 80px;
     margin-right: 80px;
     margin-bottom: 20px;
+
 }
 
 header{
     margin-bottom: 15px;
 }
 
-.container-fluid{
+.headbox{
     background-color: #F29F05;
     
 }

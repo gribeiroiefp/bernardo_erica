@@ -36,7 +36,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
 <body style="background-image: url(./css/img/bookvector.jpg);">
 
     <header><br>
-        <section class="container-fluid">
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -58,7 +58,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
     </header>
 
 
-   <section class="box">
+   <section class="container-lg box">
         <div class="container-lg homepage">
             <h2>New Releases</h2>
             <div class="row">
@@ -115,7 +115,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
         </div>
     </section>
 
-
+    
     <footer class="container-fluid text-center">
         <div class="container-lg">
             <p>&copy;Website de Livros bernardo_erica</p>
