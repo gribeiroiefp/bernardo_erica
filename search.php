@@ -42,8 +42,9 @@ if (!$conn) {
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
-            <button class="col-2"> Add Author <a href="addAutor.html"></a></button>
+            <button class="col-2"> Search <a href="search.php">
+            <button class="col-2"> Add Book <a href="addLivro.php">                   
+            <button class="col-2"> Add Author <a href="addAutor.php">
         </nav>
     </header>
 

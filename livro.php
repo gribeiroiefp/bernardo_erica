@@ -41,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-    <header><br>
-        <section class="container-fluid">
+      <header><br>
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -58,8 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
-            <button class="col-2"> Add Author <a href="addAutor.html"></a></button>
+            <button class="col-2"> Search <a href="search.php">
+            <button class="col-2"> Add Book <a href="addLivro.php">                   
+            <button class="col-2"> Add Author <a href="addAutor.php">
         </nav>
     </header>
 

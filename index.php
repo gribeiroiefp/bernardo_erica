@@ -52,6 +52,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </table>
         </section>
         <nav>
+            <button class="col-2"> Search <a href="search.php">
             <button class="col-2"> Add Book <a href="addLivro.php">                   
             <button class="col-2"> Add Author <a href="addAutor.php">
         </nav>

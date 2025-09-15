@@ -50,8 +50,8 @@ $autores = mysqli_query($conn, "SELECT id_autor, nome FROM autores ORDER BY nome
 
 <body style="background-image: url(./css/img/bookvector.jpg);">
 
-    <header><br>
-        <section class="container-fluid">
+        <header><br>
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -63,10 +63,13 @@ $autores = mysqli_query($conn, "SELECT id_autor, nome FROM autores ORDER BY nome
                 <tr>
                     <td class="tagline">Your all in a website personal archive</td>
                 </tr>
+                
             </table>
         </section>
-        <nav>                 
-            <button class="col-2"> Add Author <a href="addAutor.php"></a></button>
+        <nav>
+            <button class="col-2"> Search <a href="search.php">
+            <button class="col-2"> Add Book <a href="addLivro.php">                   
+            <button class="col-2"> Add Author <a href="addAutor.php">
         </nav>
     </header>
 
