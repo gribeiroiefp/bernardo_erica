@@ -47,6 +47,7 @@ if (!$conn) {
             <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
     </header>
 
+<section class="box">
     <div class="container-lg search">
         <div class="pesquisa-form">
             <h2>Book Search</h2>
@@ -68,6 +69,7 @@ if (!$conn) {
             </a>
         </div>
     </div>
+</section>
 
     <footer class="container-fluid text-center">
         <div class="container-lg">
