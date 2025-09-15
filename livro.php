@@ -67,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
 
     <section class="box">
-        <div class="row align-items-center">
+        <div class="row align-items-center imge">
             <h2><?php echo htmlspecialchars($livro['titulo']); ?></h2>
-            <img src="<?php echo htmlspecialchars($livro['capa']); ?>" alt="capa" class="col-3">
+            <img src="<?php echo htmlspecialchars($livro['capa']); ?>" alt="capa" class="col-3" style="opacity:100%;">
             <div class="col-8">
                 
         </div>
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $nome = htmlspecialchars($nome['autor']);
                     echo <<<HTML
                     <a href="autor.php?id=$id_autor" class="row align-items-end">
-                        <img src="$foto" alt="$nome" class="col-2">
+                        <img src="$foto" alt="$nome" class="col-2" style="opacity:100%;">
                         <div class="autor col-10">
                             <h3>$nome</h3>
                         </div>

@@ -72,7 +72,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                     echo <<<HTML
                     <div class="livro-recente-cont col">
                         <a href="./livro.php?id=$id">
-                            <div class="livro-recente container" style="background-image: url('$capa');"></div>
+                            <div class="livro-recente container imge" style="background-image: url('$capa'); opacity:100%;"></div>
                         </a>
                         <div class="row align-items-end">
                              <div class="col">
@@ -98,14 +98,14 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                         $foto = htmlspecialchars($row['foto']);
                         echo <<<HTML
                         <div class="autor-popular-cont col">
-                            <div class="autor-popular container" style="background-image: url('$foto'); margin: 20px;">
-                                <a href="./autor.php?id=$id">
+                            <a href="./autor.php?id=$id">
+                            <div class="autor-popular container " style="background-image: url('$foto'); margin: 20px; opacity:100%; ">
                                 <div class="row align-items-end">
                                     <div class="col">
                                         <h2>$nome</h2>
                                     </div>
                                 </div>
-                                </a>
+                            </a>
                             </div> 
                         </div>
                         HTML;
