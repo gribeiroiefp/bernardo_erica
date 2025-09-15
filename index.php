@@ -71,9 +71,9 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                     $capa = htmlspecialchars($row['capa']);
                     echo <<<HTML
                     <div class="livro-recente-cont col">
-                        <div class="livro-recente container" style="background-image: url('$capa');">
-                            <a href="./livro.php?id=$id"></a>
-                        </div>
+                        <a href="./livro.php?id=$id">
+                            <div class="livro-recente container" style="background-image: url('$capa');"></div>
+                        </a>
                         <div class="row align-items-end">
                              <div class="col">
                                 <h2>$titulo</h2>
@@ -104,7 +104,8 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                                     <div class="col">
                                         <h2>$nome</h2>
                                     </div>
-                                </div></a>
+                                </div>
+                                </a>
                             </div> 
                         </div>
                         HTML;

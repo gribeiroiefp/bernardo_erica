@@ -94,9 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section class="box">
         <h2>New Author</h2>
-        <?php if ($msg): ?>
-            <div class="alert alert-info"><?= $msg ?></div>
-        <?php endif; ?>
         <form action="addAutor.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
             <input type="text" name="nome" placeholder="Name" required class="form-control mb-3" />
             <input type="number" name="ano_nascimento" placeholder="Birthyear" required min="1500" max="2099" step="1" class="form-control mb-3" />

@@ -75,9 +75,6 @@ $autores = mysqli_query($conn, "SELECT id_autor, nome FROM autores ORDER BY nome
 
     <section class="box">
         <h2>New Book</h2>
-        <?php if ($msg): ?>
-            <div class="alert alert-info"><?= $msg ?></div>
-        <?php endif; ?>
         <form action="addLivro.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
             <input type="text" name="titulo" placeholder="Title" required class="form-control mb-3" />
             <input type="number" name="ano" placeholder="Publish Year" required min="1500" max="2099" step="1" class="form-control mb-3" />
