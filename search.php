@@ -43,7 +43,6 @@ if (!$conn) {
         </section>
         <nav>
             <button class="col-2"><a href="index.php"> Home </a></button>
-            <button class="col-2"><a href="search.php"> Search </a></button>
             <button class="col-2"><a href="addLivro.php"> Add Book </a></button>                   
             <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
     </header>
