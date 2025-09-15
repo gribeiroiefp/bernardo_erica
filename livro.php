@@ -16,6 +16,12 @@ $sql_autores = "SELECT autores.id_autor, autores.nome, autores.foto
                WHERE livro_autor.id_livro = $id";
 $resultado_autores = mysqli_query($conn, $sql_autores);
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $sql = "DELETE FROM livros WHERE id_livro = $id";
+    mysqli_query($conn, $sql);
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
