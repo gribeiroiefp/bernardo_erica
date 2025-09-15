@@ -4,8 +4,6 @@ if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

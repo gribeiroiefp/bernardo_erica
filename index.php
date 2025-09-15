@@ -52,8 +52,8 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addlivro.php"></a></button>                   
-            <button class="col-2"> Add Author <a href="addautor.php"></a></button>
+            <button class="col-2"> Add Book <a href="addLivro.php"></a></button>                   
+            <button class="col-2"> Add Author <a href="addAutor.php"></a></button>
         </nav>
     </header>
 
@@ -83,8 +83,6 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             ?>
             </div>
         </div>
-        <br>
-        <br>
         <div class="container-lg homepage-autor">
             <h2>By Bibliography Size</h2>
             <div class="row">
