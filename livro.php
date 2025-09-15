@@ -58,10 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </table>
         </section>
         <nav>
-            <button class="col-2"> Home <a href="index.php"></a></button>
-            <button class="col-2"> Search <a href="search.php"></a></button>
-            <button class="col-2"> Add Book <a href="addLivro.php"></a></button>                   
-            <button class="col-2"> Add Author <a href="addAutor.php"></a></button>
+            <button class="col-2"><a href="index.php"> Home </a></button>
+            <button class="col-2"><a href="search.php"> Search </a></button>
+            <button class="col-2"><a href="addLivro.php"> Add Book </a></button>                   
+            <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
         </nav>
     </header>
 
