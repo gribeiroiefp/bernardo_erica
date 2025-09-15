@@ -78,19 +78,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </table>
         </section>
         <nav>                 
+            <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
             <button class="col-2"> Add Author <a href="addAutor.html"></a></button>
         </nav>
     </header>
 
     <section class="box">
-        <form action="addLivro.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
-            <input type="text" name="titulo" placeholder="Title" value="Test" required class="form-control mb-3" />
-            <input type="number" name="ano" placeholder="Publish Year" value="Test" required min="1500" max="2099" step="1" class="form-control mb-3" />
-            <input type="text" name="nacionalidade" placeholder="Country" value="Test" required class="form-control mb-3" />
-            <label for="capa" class="form-label">Book Cover (img):</label>
-            <input type="file" name="capa" id="capa" accept="image/*" required class="form-control mb-3" />
-            <button type="submit" class="btn btn-primary">Edit Book</button>
-        </form>
+        <h2>Edit Book</h2>
+    <?php if ($mensagem): ?>
+        <div class="alert alert-info"><?php echo htmlspecialchars($mensagem) ?></div>
+    <?php endif ?>
+    <form action="editLivro.php?id=<?php echo htmlspecialchars($livro['id']) ?>" 
+          method="POST" enctype="multipart/form-data" class="mb-5 inserir">
+        <input type="text" name="titulo" placeholder="Título" required class="form-control mb-3"
+               value="<?php echo htmlspecialchars($livro['titulo']) ?>" />
+        <input type="number" name="ano" placeholder="Ano" required min="1888" max="2099" step="1" 
+               class="form-control mb-3" value="<?php echo htmlspecialchars($livro['ano']) ?>" />
+        <input type="text" name="diretor" placeholder="Diretor" required class="form-control mb-3" 
+               value="<?php echo htmlspecialchars($livro['diretor']) ?>" />
+        <label for="capa" class="form-label">Book Cover (imag):</label>
+        <input type="file" name="capa" id="capa" accept="image/*" class="form-control mb-3" />
+        <?php if (!empty($livro['capa'])): ?>
+            <img src="<?php echo htmlspecialchars($livro['capa']) ?>" alt="book cover" class="foto">
+        <?php endif ?>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
     </section>
 
     <footer class="container-fluid text-center">

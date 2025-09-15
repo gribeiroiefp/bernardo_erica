@@ -84,17 +84,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
         <nav>
             <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
+            <button class="col-2"> Add Author <a href="addAutor.html"></a></button>              
         </nav>
     </header>
 
     <section class="box">
-        <form action="editAutor.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
-            <input type="text" name="nome" placeholder="Name" value="Test" required class="form-control mb-3" />
-            <input type="number" name="ano_nascimento" placeholder="Birthyear"  value="Test" required min="1500" max="2099" step="1" class="form-control mb-3" />
-            <label for="capa" class="form-label">Author Photo (img):</label>
-            <input type="file" name="foto" id="foto" accept="image/*" required class="form-control mb-3" />
-            <button type="submit" class="btn btn-primary">Edit Author</button>
-        </form>
+         <h2>Edit Author</h2>
+        <?php if ($mensagem): ?> <div class="alert alert-info"><?php echo htmlspecialchars($mensagem) ?></div> <?php endif ?>
+        <form action="editAutor.php?id=<?php echo htmlspecialchars($autor['id']) ?>" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
+            <input type="text" name="nome" placeholder="Nome" required class="form-control mb-3" value="<?php echo htmlspecialchars($autor['nome']) ?>" />
+            <input type="year" name="ano_nascimento" required class="form-control mb-3" value="<?php echo htmlspecialchars($autor['ano_nascimento']) ?>" />
+            <input type="text" name="nacionalidade" placeholder="Nacionalidade" required class="form-control mb-3" value="<?php echo htmlspecialchars($autor['nacionalidade']) ?>" />
+            <label for="foto" class="form-label">Author (imag):</label>
+            <input type="file" name="foto" id="foto" accept="image/*" class="form-control mb-3" />
+             <?php if (!empty($autor['foto'])): ?> <img src="<?php echo htmlspecialchars($autor['foto']) ?>" alt="Author's picture" class="foto">
+                <?php endif ?> <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
     </section>
 
     <footer class="container-fluid text-center">
