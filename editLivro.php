@@ -1,10 +1,46 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root','', 'livros_db');
+$conn = mysqli_connect('127.0.0.1', 'root', '', 'livros_db');
 if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
+if (!isset($_GET['id'])) {
+    die("⚠️ Nenhum livro selecionado.");
+}
+$id_livro = intval($_GET['id']);
 
+// procurar dados do livro
+$result = mysqli_query($conn, "SELECT * FROM livros WHERE id_livro = $id_livro");
+$livro = mysqli_fetch_assoc($result);
+if (!$livro) {
+    die("⚠️ Livro não encontrado.");
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $titulo = $_POST['titulo'];
+    $ano = $_POST['ano'];
+    $capa = $livro['capa']; // capa atual
+
+    // Se o utilizador carregar uma nova imagem
+    if (!empty($_FILES["capa"]["name"])) {
+        $dir = "uploads/capas/";
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        $capa = $dir . basename($_FILES["capa"]["name"]);
+        move_uploaded_file($_FILES["capa"]["tmp_name"], $capa);
+    }
+
+    // Atualizar livro
+    $sql = "UPDATE livros SET titulo='$titulo', ano='$ano', capa='$capa' WHERE id_livro=$id_livro";
+    if (mysqli_query($conn, $sql)) {
+        echo "<div class='alert alert-success text-center'>✅ Livro atualizado com sucesso!</div>";
+        $livro['titulo'] = $titulo;
+        $livro['ano'] = $ano;
+        $livro['capa'] = $capa;
+    } else {
+        echo "<div class='alert alert-danger text-center'>Erro: " . mysqli_error($conn) . "</div>";
+    }
+}
 
 ?>
 <!DOCTYPE html>

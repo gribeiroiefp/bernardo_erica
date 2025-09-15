@@ -1,10 +1,51 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root','', 'livros_db');
+$conn = mysqli_connect('127.0.0.1', 'root', '', 'livros_db');
 if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
+// Obter o ID do autor
+if (!isset($_GET['id'])) {
+    die("⚠️ Nenhum autor selecionado.");
+}
+$id_autor = intval($_GET['id']);
 
+// Buscar os dados do autor
+$result = mysqli_query($conn, "SELECT * FROM autores WHERE id_autor = $id_autor");
+$autor = mysqli_fetch_assoc($result);
+if (!$autor) {
+    die("⚠️ Autor não encontrado.");
+}
+
+// Atualizar caso o formulário seja submetido
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'];
+    $ano_nascimento = $_POST['ano_nascimento'];
+    $nacionalidade = $_POST['nacionalidade'];
+    $foto = $autor['foto']; // mantém foto atual
+
+    // Se carregar nova imagem
+    if (!empty($_FILES["foto"]["name"])) {
+        $dir = "uploads/fotos/";
+        if (!is_dir($dir)) mkdir($dir, 0777, true);
+        $foto = $dir . basename($_FILES["foto"]["name"]);
+        move_uploaded_file($_FILES["foto"]["tmp_name"], $foto);
+    }
+
+    // Atualizar dados
+    $sql = "UPDATE autores 
+            SET nome='$nome', ano_nascimento='$ano_nascimento', nacionalidade='$nacionalidade', foto='$foto' 
+            WHERE id_autor=$id_autor";
+    if (mysqli_query($conn, $sql)) {
+        echo "<div class='alert alert-success text-center'>✅ Autor atualizado com sucesso!</div>";
+        $autor['nome'] = $nome;
+        $autor['ano_nascimento'] = $ano_nascimento;
+        $autor['nacionalidade'] = $nacionalidade;
+        $autor['foto'] = $foto;
+    } else {
+        echo "<div class='alert alert-danger text-center'>Erro: " . mysqli_error($conn) . "</div>";
+    }
+}
 
 ?>
 <!DOCTYPE html>
