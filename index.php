@@ -99,15 +99,14 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                         $foto = htmlspecialchars($row['foto']);
                         echo <<<HTML
                         <div class="autor-popular-cont col">
-                            <div class="autor-popular container" style="background-image: url('$foto');">
+                            <div class="autor-popular container" style="background-image: url('$foto'); margin: 20px;">
                                 <a href="./autor.php?id=$id">
-                                    <div class="row align-items-end">
-                                        <div class="col">
-                                            <h2>$nome</h2>
-                                        </div>
+                                <div class="row align-items-end">
+                                    <div class="col">
+                                        <h2>$nome</h2>
                                     </div>
-                                </a>
-                            </div>
+                                </div></a>
+                            </div> 
                         </div>
                         HTML;
                     }

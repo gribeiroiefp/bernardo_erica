@@ -9,7 +9,8 @@
     margin-right: 80px;
     margin-bottom: 20px;
     background-size: cover;
-
+    position: absolute;
+    min-height: fit-content;
 }
 
 
@@ -148,7 +149,9 @@ header nav button:visited {
 }
 
 .homepage-autor  .autor-popular {
-    height: 100%;;
+    height: 100%;
+    opacity: 100%;
+    margin: 50px;
     background-position: center;
     background-size: cover;
 }
@@ -176,8 +179,11 @@ footer {
     background-color: #F29F05; 
     text-align: center;
     padding: 6px;
-    margin-top: 5px;}
-
+    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+}
+    
 
 /* Swatches em Hex
 
