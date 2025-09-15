@@ -73,13 +73,12 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                     echo <<<HTML
                     <div class="livro-recente-cont col">
                         <div class="livro-recente container" style="background-image: url('$capa');">
-                            <a href="./livro.php?id=$id">
-                                <div class="row align-items-end">
-                                    <div class="col">
-                                        <h2>$titulo</h2>
-                                    </div>
-                                </div>
-                            </a>
+                            <a href="./livro.php?id=$id"></a>
+                        </div>
+                        <div class="row align-items-end">
+                             <div class="col">
+                                <h2>$titulo</h2>
+                            </div>
                         </div>
                     </div>
                     HTML;
@@ -88,7 +87,8 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             ?>
             </div>
         </div>
-        <div class="container-lg homepage">
+        <br>
+        <div class="container-lg homepage" style="margin-top:150px;">
             <h2>By Bibliography Size</h2>
             <div class="row">
                 <?php
