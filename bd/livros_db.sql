@@ -6,6 +6,9 @@
 -- Tempo de geração: 01-Set-2025 às 19:02
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
+-- Tempo de geração: 01-Set-2025 às 19:02
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -19,11 +22,13 @@ SET time_zone = "+00:00";
 
 --
 -- Banco de dados: `livros_db`
+-- Banco de dados: `livros_db`
 --
 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `autores`
 -- Estrutura da tabela `autores`
 --
 
@@ -47,6 +52,7 @@ INSERT INTO `autores` (`id_autor`, `nome`, `ano_nascimento`, `nacionalidade`, `f
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `livros`
 -- Estrutura da tabela `livros`
 --
 
@@ -72,6 +78,7 @@ INSERT INTO `livros` (`id_livro`, `titulo`, `ano`, `capa`) VALUES
 
 --
 -- Estrutura da tabela `livro_autor`
+-- Estrutura da tabela `livro_autor`
 --
 
 CREATE TABLE `livro_autor` (
@@ -93,9 +100,22 @@ INSERT INTO `livro_autor` (`id`, `id_livro`, `id_autor`) VALUES
 
 --
 -- Índices para tabelas despejadas
+-- Extraindo dados da tabela `livro_autor`
+--
+
+INSERT INTO `livro_autor` (`id`, `id_livro`, `id_autor`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 2),
+(4, 4, 3),
+(5, 5, 3);
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
+-- Índices para tabela `autores`
 -- Índices para tabela `autores`
 --
 ALTER TABLE `autores`
@@ -103,11 +123,13 @@ ALTER TABLE `autores`
 
 --
 -- Índices para tabela `livros`
+-- Índices para tabela `livros`
 --
 ALTER TABLE `livros`
   ADD PRIMARY KEY (`id_livro`);
 
 --
+-- Índices para tabela `livro_autor`
 -- Índices para tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`
@@ -117,31 +139,40 @@ ALTER TABLE `livro_autor`
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `autores`
+-- AUTO_INCREMENT de tabela `autores`
 --
 ALTER TABLE `autores`
+  MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
   MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
+-- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
+  MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
   MODIFY `id_livro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `livro_autor`
+-- AUTO_INCREMENT de tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restrições para despejos de tabelas
+-- Restrições para despejos de tabelas
 --
 
 --
+-- Limitadores para a tabela `livro_autor`
 -- Limitadores para a tabela `livro_autor`
 --
 ALTER TABLE `livro_autor`

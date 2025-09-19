@@ -52,8 +52,9 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addlivro.php"></a></button>                   
-            <button class="col-2"> Add Author <a href="addautor.php"></a></button>
+            <button class="col-2"><a href="search.php"> Search </a></button>
+            <button class="col-2"><a href="addLivro.php"> Add Book </a></button>                   
+            <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
         </nav>
     </header>
 
@@ -70,11 +71,13 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                     $capa = htmlspecialchars($row['capa']);
                     echo <<<HTML
                     <div class="livro-recente-cont col">
-                        <div class="livro-recente container" style="background-image: url('$capa');">
-                            <a href="./livro.php?id=$id"></a>
-                        </div> 
-                        <div class="col titulo">
-                            <h2>$titulo</h2>
+                        <a href="./livro.php?id=$id">
+                            <div class="livro-recente container imge" style="background-image: url('$capa'); opacity:100%;"></div>
+                        </a>
+                        <div class="row align-items-end">
+                             <div class="col">
+                                <h2>$titulo</h2>
+                            </div>
                         </div>
                     </div>
                     HTML;
@@ -84,8 +87,7 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
             </div>
         </div>
         <br>
-        <br>
-        <div class="container-lg homepage-autor">
+        <div class="container-lg homepage" style="margin-top:150px;">
             <h2>By Bibliography Size</h2>
             <div class="row">
                 <?php
@@ -96,13 +98,15 @@ $resultado_autores = mysqli_query($conn, $sql_autores);
                         $foto = htmlspecialchars($row['foto']);
                         echo <<<HTML
                         <div class="autor-popular-cont col">
-                            <div class="autor-popular container" style="background-image: url('$foto');">
-                                <a href="./autor.php?id=$id">
-                                </a>
-                                <div class="col">
-                                    <h2>$nome</h2>
+                            <a href="./autor.php?id=$id">
+                            <div class="autor-popular container " style="background-image: url('$foto'); margin: 20px; opacity:100%; ">
+                                <div class="row align-items-end">
+                                    <div class="col">
+                                        <h2>$nome</h2>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+                            </div> 
                         </div>
                         HTML;
                     }

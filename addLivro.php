@@ -1,9 +1,34 @@
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root','', 'livros_db');
+$conn = mysqli_connect('127.0.0.1', 'root', '', 'livros_db');
 if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $titulo = $_POST['titulo'];
+    $ano = $_POST['ano'];
+    $id_autor = $_POST['id_autor'];
+
+    
+    $dir = "uploads/capas/";
+    if (!is_dir($dir)) mkdir($dir, 0777, true);
+    $capa = $dir . basename($_FILES["capa"]["name"]);
+    move_uploaded_file($_FILES["capa"]["tmp_name"], $capa);
+
+    // Inserir livros
+    $sql = "INSERT INTO livros (titulo, ano, capa) VALUES ('$titulo', '$ano', '$capa')";
+    if (mysqli_query($conn, $sql)) {
+        $id_livro = mysqli_insert_id($conn);
+        mysqli_query($conn, "INSERT INTO livro_autor (id_livro, id_autor) VALUES ($id_livro, $id_autor)");
+        echo "<div class='alert alert-success text-center'>✅ Livro adicionado com sucesso!</div>";
+    } else {
+        echo "<div class='alert alert-danger text-center'>Erro: " . mysqli_error($conn) . "</div>";
+    }
+}
+
+// Procurar autores dropdown
+$autores = mysqli_query($conn, "SELECT id_autor, nome FROM autores ORDER BY nome");
 
 
 ?>
@@ -26,7 +51,7 @@ if (!$conn) {
 <body style="background-image: url(./css/img/bookvector.jpg);">
 
     <header><br>
-        <section class="container-fluid">
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -41,18 +66,30 @@ if (!$conn) {
                 
             </table>
         </section>
-        <nav>                 
-            <button class="col-2"> Add Author <a href="addAutor.html"></a></button>
+        <nav>
+            <button class="col-2"><a href="index.php"> Home </a></button>
+            <button class="col-2"><a href="search.php"> Search </a></button>                
+            <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
         </nav>
     </header>
 
     <section class="box">
+        <h2>New Book</h2>
         <form action="addLivro.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
             <input type="text" name="titulo" placeholder="Title" required class="form-control mb-3" />
             <input type="number" name="ano" placeholder="Publish Year" required min="1500" max="2099" step="1" class="form-control mb-3" />
-            <input type="text" name="nacionalidade" placeholder="Country" required class="form-control mb-3" />
+
+            <label for="id_autor" class="form-label">Author:</label>
+            <select name="id_autor" id="id_autor" required class="form-select mb-3">
+                <option value="">-- Select Author --</option>
+                <?php while ($a = mysqli_fetch_assoc($autores)): ?>
+                    <option value="<?= $a['id_autor'] ?>"><?= htmlspecialchars($a['nome']) ?></option>
+                <?php endwhile; ?>
+            </select>
+
             <label for="capa" class="form-label">Book Cover (img):</label>
             <input type="file" name="capa" id="capa" accept="image/*" required class="form-control mb-3" />
+
             <button type="submit" class="btn btn-primary">Add Book</button>
         </form>
     </section>
@@ -68,5 +105,5 @@ if (!$conn) {
         crossorigin="anonymous">
     </script>
 
-    </body>
+</body>
 </html>

@@ -4,8 +4,52 @@ if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = trim($_POST['nome']);
+    $ano = $_POST['ano_nascimento'];
+    $nacionalidade = isset($_POST['nacionalidade']) ? trim($_POST['nacionalidade']) : "";
 
+    // Verificar se já existe o autor
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM autores WHERE nome = ? AND ano_nascimento = ? AND nacionalidade = ?");
+    $checkStmt->bind_param("sss", $nome, $ano_nascimento, $nacionalidade);
+    $checkStmt->execute();
+    $checkStmt->bind_result($count);
+    $checkStmt->fetch();
+    $checkStmt->close();
 
+    if ($count > 0) {
+        echo "<div class='alert alert-warning text-center'>⚠️ Autor já existe na base de dados!</div>";
+    } else {
+        
+        $targetDir = "uploads/fotos/";
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        $fileName = basename($_FILES["foto"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
+        if ($check !== false) {
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFilePath)) {
+                $stmt = $conn->prepare("INSERT INTO autores (nome, ano_nascimento, nacionalidade, foto) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $nome, $ano_nascimento, $nacionalidade, $targetFilePath);
+
+                if ($stmt->execute()) {
+                    echo "<div class='alert alert-success text-center'>✅ Autor adicionado com sucesso!</div>";
+                } else {
+                    echo "<div class='alert alert-danger text-center'>Erro: " . $stmt->error . "</div>";
+                }
+
+                $stmt->close();
+            } else {
+                echo "<div class='alert alert-warning text-center'>Erro ao fazer upload da foto.</div>";
+            }
+        } else {
+            echo "<div class='alert alert-warning text-center'>O ficheiro não é uma imagem válida.</div>";
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +70,7 @@ if (!$conn) {
 <body style="background-image: url(./css/img/bookvector.jpg);">
 
     <header><br>
-        <section class="container-fluid">
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -42,15 +86,19 @@ if (!$conn) {
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
+            <button class="col-2"><a href="index.php"> Home </a></button>
+            <button class="col-2"><a href="search.php"> Search </a></button>
+            <button class="col-2"><a href="addLivro.php"> Add Book </a></button>                   
         </nav>
     </header>
 
     <section class="box">
+        <h2>New Author</h2>
         <form action="addAutor.php" method="POST" enctype="multipart/form-data" class="mb-5 inserir">
             <input type="text" name="nome" placeholder="Name" required class="form-control mb-3" />
             <input type="number" name="ano_nascimento" placeholder="Birthyear" required min="1500" max="2099" step="1" class="form-control mb-3" />
-            <label for="capa" class="form-label">Author Photo (img):</label>
+            <input type="text" name="nacionalidade" placeholder="Nationality" required class="form-control mb-3" />
+            <label for="foto" class="form-label">Author Photo (img):</label>
             <input type="file" name="foto" id="foto" accept="image/*" required class="form-control mb-3" />
             <button type="submit" class="btn btn-primary">Add Author</button>
         </form>

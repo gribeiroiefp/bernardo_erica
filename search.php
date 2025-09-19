@@ -4,6 +4,21 @@ if (!$conn) {
     die('Erro na ligação: ' . mysqli_connect_error());
 }
 
+$resultados_livros = [];
+
+if (isset($_GET['string']) && !empty($_GET['string'])) {
+    $string = $_GET['string'];
+    $sql_livros = "SELECT * FROM livros WHERE titulo LIKE '%$string%'";
+    $resultados_livros = mysqli_query($conn, $sql_livros);
+}
+
+$resultados_autores = [];
+
+if (isset($_GET['string']) && !empty($_GET['string'])) {
+    $string = $_GET['string'];
+    $sql_autores = "SELECT * FROM autores WHERE nome LIKE '%$string%'";
+    $resultados_autores = mysqli_query($conn, $sql_autores);
+}
 
 
 ?>
@@ -26,7 +41,7 @@ if (!$conn) {
 <body style="background-image: url(./css/img/bookvector.jpg);">
 
     <header><br>
-        <section class="container-fluid">
+        <section class="container-fluid headbox">
             <table>
                 <tr>
                     <td class="name col-1" rowspan="3"><img src="./css/img/logo.png" alt="logo R-Pa"></td>
@@ -42,32 +57,95 @@ if (!$conn) {
             </table>
         </section>
         <nav>
-            <button class="col-2"> Add Book <a href="addLivro.html"></a></button>                   
-            <button class="col-2"> Add Author <a href="addAutor.html"></a></button>
-        </nav>
+            <button class="col-2"><a href="index.php"> Home </a></button>
+            <button class="col-2"><a href="addLivro.php"> Add Book </a></button>                   
+            <button class="col-2"><a href="addAutor.php"> Add Author </a></button>
     </header>
 
+<section class="box">
     <div class="container-lg search">
         <div class="pesquisa-form">
             <h2>Book Search</h2>
-            <form action="">
+        </div>
+        <div class="lista col">
+            <form action="" method="GET">
                 <div class="sombra-form">
-                    <input type="text" name="texto" placeholder="Search Title" required>
+                    <?php if (isset($_GET['string'])): ?>
+                        <input type="text" name="string" placeholder="Search Book Title" required value="<?= $_GET['string'] ?>">
+                    <?php else: ?>
+                        <input type="text" name="string" placeholder="Search Book Title" required>
+                    <?php endif; ?>
                     <button type="submit">Search</button>
                 </div>
             </form>
         </div>
-        <div class="lista col">
-            <h3>Results</h3>
-            <a href="livro.html" class="livro_link row align-items-end">
-                <img src="capa" alt="$titulo" class="col-3">
-                <div class="livro col">
-                    <h3>titulo</h3>
-                    <p>ano</p>
-                </div>
-            </a>
-        </div>
+        <?php if (isset($_GET['string']) && !$_GET['string'] == ''): ?>
+            <div class="lista col">
+                <h3>Results</h3>
+                <?php
+                if ($resultados_livros && mysqli_num_rows($resultados_livros) > 0) {
+                    while ($livro = mysqli_fetch_assoc($resultados_livros)) {
+                        $id = $livro['id_livro'];
+                        $capa = $livro['capa'];
+                        $titulo = htmlspecialchars($livro['titulo']);
+                        $ano = htmlspecialchars($livro['ano']);
+
+                        echo <<<HTML
+                    <a href="livro.php?id=$id" class="livro_link row align-items-end">
+                        <img src="$capa" alt="$titulo" class="col-3">
+                        <div class="livro col">
+                            <h3>$titulo</h3>
+                            <p>$ano</p>
+                        </div>
+                    </a>
+                    HTML;
+                    }
+                }
+                ?>
+            </div>
+        <?php endif; ?>
     </div>
+    <div class="container-lg search">
+        <div class="pesquisa-form">
+            <h2>Author Search</h2>
+        </div>
+        <div class="lista col">
+            <form action="" method="GET">
+                <div class="sombra-form">
+                    <?php if (isset($_GET['string'])): ?>
+                        <input type="text" name="string" placeholder="Search Author Name" required value="<?= $_GET['string'] ?>">
+                    <?php else: ?>
+                        <input type="text" name="string" placeholder="Search Author Name" required>
+                    <?php endif; ?>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        <?php if (isset($_GET['string']) && !$_GET['string'] == ''): ?>
+            <div class="lista col">
+                <h3>Results</h3>
+                <?php
+                if ($resultados_autores && mysqli_num_rows($resultados_autores) > 0) {
+                    while ($autor = mysqli_fetch_assoc($resultados_autores)) {
+                        $id = $autor['id_autor'];
+                        $foto = $autor['foto'];
+                        $nome = htmlspecialchars($autor['nome']);
+
+                        echo <<<HTML
+                    <a href="autor.php?id=$id" class="autor_link row align-items-end">
+                        <img src="$foto" alt="$nome" class="col-3">
+                        <div class="autor col">
+                            <h3>$nome</h3>
+                        </div>
+                    </a>
+                    HTML;
+                    }
+                }
+                ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
 
     <footer class="container-fluid text-center">
         <div class="container-lg">
